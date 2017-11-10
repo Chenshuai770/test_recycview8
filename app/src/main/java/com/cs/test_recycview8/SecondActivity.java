@@ -167,11 +167,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         if (mCharMap!=null){
            chargeListResults = mCharMap.get(1);
-
+            sendListResults = mCharMap.get(2);
         }
-        if (mSendMap!=null){
+       /* if (mSendMap!=null){
             sendListResults = mSendMap.get(2);
-        }
+        }*/
 
 
         mRlvSecond = (RecyclerView) findViewById(R.id.rlv_second);

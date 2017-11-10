@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent.putExtra("chargename",json);
                 }
 
-                if (mSendList!=null) {
+               /* if (mSendList!=null) {
                     Log.d("XXX", "mNames.size():" + mSendList.size());
                     Gson gson = new Gson();
                     String json = gson.toJson(mSendList);
                     intent.putExtra("sendname",json);
                 }
-
+*/
 
                 intent.putExtra("type",1);
 
@@ -82,12 +82,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent.putExtra("chargename",json);
                 }
 
-                if (mSendList!=null) {
+                /*if (mSendList!=null) {
                     Log.d("XXX", "mNames.size():" + mSendList.size());
                     Gson gson = new Gson();
                     String json = gson.toJson(mSendList);
                     intent.putExtra("sendname",json);
-                }
+                }*/
 
                 startActivityForResult(intent, 2);
                 break;
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         } else if (requestCode == 2) {
             if (resultCode == 2) {
-                String json = data.getStringExtra("json");
+                /*String json = data.getStringExtra("json");
                 Gson gson = new Gson();
                 mSendList = gson.fromJson(json, new TypeToken<Map<Integer,List<ChargeListResult >>>() {
                 }.getType());
@@ -136,7 +136,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     name += mSendName.get(i).getName();
 
                 }
+*/
 
+                String json = data.getStringExtra("json");
+                Gson gson = new Gson();
+                mChargeList = gson.fromJson(json, new TypeToken<Map<Integer,List<ChargeListResult >>>() {
+                }.getType());
+                String name = "";
+                StringBuffer append = null;
+                List<ChargeListResult> mChargeName = mChargeList.get(2);
+                for (int i = 0; i < mChargeName.size(); i++) {
+                    StringBuffer stringBuffer = new StringBuffer();
+                    append = stringBuffer.append(mChargeName.get(i).getName() + ",");
+                    Log.d("MainActivity", mChargeName.get(i).getName());
+                    name += mChargeName.get(i).getName();
+
+                }
                 mTvMain2.setText(name);
             }
 
